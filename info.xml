@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<extension key="net.ourpowerbase.search.anyteloremail" type="module">
+  <file>anyteloremail</file>
+  <name>Any Telephone or Email Search</name>
+  <description>Returns all telephone and email addresses for contacts in the database based on partial telephone or email address</description>
+  <license>GPL v3 or later</license>
+  <maintainer>
+    <author>Jamie McClelland/Progressive Technology Project</author>
+    <email>jamie@progressivetech.org</email>
+  </maintainer>
+  <releaseDate>2013-05-17</releaseDate>
+  <version>1.0</version>
+  <develStage>alpha</develStage>
+  <compatibility>
+    <ver>4.3</ver>
+  </compatibility>
+  <comments>This is a new, undeveloped module</comments>
+  <civix>
+    <namespace>CRM/Anyteloremail</namespace>
+  </civix>
+</extension>
