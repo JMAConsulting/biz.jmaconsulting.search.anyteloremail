@@ -110,7 +110,7 @@ class CRM_Anyteloremail_Form_Search_anyTelOrEmail extends CRM_Contact_Form_Searc
     $prefix = substr($number,3,3);
     $last = substr($number,6,4);
 
-    return ".*$area_code.*$prefix.*$last.*";
+    return "[^0-9]*$area_code[^0-9]*$prefix[^0-9]*$last[^0-9]*";
 
   }
   function setDefaultValues() {
