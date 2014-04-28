@@ -12,7 +12,7 @@ return array (
     array (
       'version' => 3,
       'label' => 'anyTelOrEmail',
-      'description' => 'Any Telephone Or Email: Returns all telephone and email addresses for contacts in the database based on partial telephone or email address',
+      'description' => 'Any Telephone Or Email',
       'class_name' => 'CRM_Anyteloremail_Form_Search_anyTelOrEmail',
     ),
   ),
