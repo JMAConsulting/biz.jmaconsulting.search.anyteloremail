@@ -144,7 +144,7 @@ function _anyteloremail_civix_civicrm_managed(&$entities) {
     $es = include $file;
     foreach ($es as $e) {
       if (empty($e['module'])) {
-        $e['module'] = 'net.ourpowerbase.search.anyteloremail';
+        $e['module'] = 'biz.jmaconsulting.search.anyteloremail';
       }
       $entities[] = $e;
     }
