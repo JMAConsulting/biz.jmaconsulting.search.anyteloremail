@@ -16,6 +16,7 @@
   <develStage>stable</develStage>
   <compatibility>
     <ver>4.4</ver>
+    <ver>4.5</ver>
   </compatibility>
   <comments>Thanks to Jamie McClelland/Progressive Technology Project (jamie@progressivetech.org) for developing an alpha release. This stable release finds non-primary phone and emails, ensures a single result per contact, improves the matching on phone numbers, removes duplicate phones and emails for a contact, includes the phone extensions in the phone numbers, and displays all cities and states for contacts.</comments>
   <civix>
