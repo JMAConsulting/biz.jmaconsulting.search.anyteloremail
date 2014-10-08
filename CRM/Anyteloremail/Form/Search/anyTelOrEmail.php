@@ -94,6 +94,9 @@ class CRM_Anyteloremail_Form_Search_anyTelOrEmail extends CRM_Contact_Form_Searc
       $where = "(contact_a.is_deleted = 0 AND phone.phone REGEXP %1) ";
       $params[1] = array($phoneregex, 'String');
     } // else both are empty
+    else {
+      $where = "1 ";
+    }
 
     $whereClause = $this->whereClause($where, $params);
 
