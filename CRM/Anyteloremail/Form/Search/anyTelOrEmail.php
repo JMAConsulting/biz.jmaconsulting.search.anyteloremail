@@ -28,6 +28,12 @@ class CRM_Anyteloremail_Form_Search_anyTelOrEmail extends CRM_Contact_Form_Searc
       'email',
       ts('Email address')
     );
+    $form->add(
+      'checkbox',
+      'regexp',
+      ts('Search email address via regular expression (slower)')
+    );
+
     /**
      * You can define a custom title for the search form
      */
@@ -38,7 +44,7 @@ class CRM_Anyteloremail_Form_Search_anyTelOrEmail extends CRM_Contact_Form_Searc
      * if you are using the standard template, this array tells the template what elements
      * are part of the search criteria
      */
-    $form->assign('elements', array('number', 'email', 'howdy'));
+    $form->assign('elements', array('number', 'email', 'howdy', 'regexp'));
   }
 
   function summary() {
@@ -82,14 +88,16 @@ class CRM_Anyteloremail_Form_Search_anyTelOrEmail extends CRM_Contact_Form_Searc
     $phone = CRM_Utils_Array::value('number', $this->_formValues);
     $phoneregex = $this->convertNumberToRegex($phone);
     $email = CRM_Utils_Array::value('email', $this->_formValues);
+    $email .= CRM_Utils_Array::value('regexp', $this->_formValues) ? '' : '%';
+    $operator = CRM_Utils_Array::value('regexp', $this->_formValues) ? 'REGEXP' : 'LIKE';
 
     if(!empty($phone) && !empty($email)) {
-      $where = "(contact_a.is_deleted = 0 AND phone.phone REGEXP %1) AND (contact_a.is_deleted = 0 AND email.email REGEXP %2) ";
+      $where = "(contact_a.is_deleted = 0 AND phone.phone REGEXP %1) AND (contact_a.is_deleted = 0 AND email.email $operator %2) ";
       $params[1] = array($phoneregex, 'String');
       $params[2] = array($email, 'String');
     } elseif(!empty($email)) { // $phone is empty
-      $where = "(contact_a.is_deleted = 0 AND email.email REGEXP %1) ";
-      $params[1] = array('.*' . $email . '.*', 'String');
+      $where = "(contact_a.is_deleted = 0 AND email.email $operator %1) ";
+      $params[1] = array($email, 'String');
     } elseif (!empty($phone)) { // $email is empty
       $where = "(contact_a.is_deleted = 0 AND phone.phone REGEXP %1) ";
       $params[1] = array($phoneregex, 'String');
